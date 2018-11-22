@@ -1,0 +1,47 @@
+<!-- begin login -->
+<div class="login bg-black animated fadeInDown">
+    <!-- begin brand -->
+    <div class="login-header">
+        <div class="brand">
+            <span class="logo"></span> <b>Bienvenido a Nexos</b>
+            <small>Sistema de Información</small>
+        </div>
+        <div class="icon">
+            <i class="fa fa-lock"></i>
+        </div>
+    </div>
+    <!-- end brand -->
+    <!-- begin login-content -->
+    <div class="login-content">
+        <form #f="ngForm" role="form" name="form" (ngSubmit)="f.form.valid && authenticate(f)" class="margin-bottom-0" novalidate>
+            <div class="form-group m-b-20">
+                <input type="text" class="form-control form-control-lg inverse-mode" [(ngModel)]="userAthentication.userName" 
+                    name="userName" placeholder="Correo Electronico" 
+                    #userNameV="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userNameV.invalid }" required="" />
+                <div *ngIf="f.submitted && userNameV.invalid" class="invalid-feedback">
+                    <div *ngIf="userNameV.errors.required">Nombre usuario es requerido</div>
+                </div>
+            </div>
+            <div class="form-group m-b-20">
+                <input type="password" class="form-control form-control-lg inverse-mode" [(ngModel)]="userAthentication.password" 
+                    name="password" placeholder="Clave" 
+                    #passwordV="ngModel" [ngClass]="{ 'is-invalid': f.submitted && passwordV.invalid }" required="" />
+                    <div *ngIf="f.submitted && passwordV.invalid" class="invalid-feedback">
+                        <div *ngIf="passwordV.errors.required">Clave usuario es requerida</div>
+                    </div>
+            </div>
+            <!--<div class="checkbox checkbox-css m-b-20">
+                <input type="checkbox" id="remember_checkbox" />
+                <label for="remember_checkbox">
+                  Remember Me
+                </label>
+            </div>-->
+            <div class="login-buttons">
+                <button type="submit" class="btn btn-success btn-block btn-lg">Sign me in</button>
+                <a [routerLink]="['/recovery']"><small>Olvidaste Clave?</small></a>
+            </div>
+        </form>
+    </div>
+    <!-- end login-content -->
+</div>
+<!-- end login -->
